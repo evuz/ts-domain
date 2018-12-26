@@ -1,9 +1,9 @@
 const instances = {};
 
 interface IConstructor<T> {
-  name?: string
-  new(...args: any[]): T;
-};
+  name?: string;
+  new (...args: any[]): T;
+}
 
 export function generateSingleton<T>(singleton: IConstructor<T>, ...params: any[]): T {
   const instance = instances[singleton.name];
