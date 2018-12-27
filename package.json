@@ -7,8 +7,12 @@
   "files": [
     "lib/**/*"
   ],
+  "bin": {
+    "ts-domain": "./bin/ts-domain.js"
+  },
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest --config jestconfig.json",
@@ -50,5 +54,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
   }
 }
