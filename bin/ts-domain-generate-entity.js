@@ -1,1 +1,1 @@
-console.log('Generate a entity')
+require('../lib/cli/generate-entity');

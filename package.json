@@ -11,8 +11,11 @@
     "ts-domain": "./bin/ts-domain.js"
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "npm run build:lib && npm run build:cli",
+    "build:lib": "tsc --project tsconfig.lib.json",
+    "build:cli": "tsc --project tsconfig.cli.json",
+    "dev:lib": "tsc --watch --project tsconfig.lib.json",
+    "dev:cli": "tsc --watch --project tsconfig.cli.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest --config jestconfig.json",
@@ -34,6 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.18",
     "husky": "^1.2.1",
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",

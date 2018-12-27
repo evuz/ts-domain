@@ -3,8 +3,8 @@ const program = require('commander');
 
 const { version } = require('../package.json');
 
-program.version(version, '-v, --version');
-
-program.command('generate [type]', 'generates file structure').alias('g');
-
-program.parse(process.argv);
+program
+  .version(version, '-v, --version')
+  .command('generate [type]', 'generates file structure')
+  .alias('g')
+  .parse(process.argv);
