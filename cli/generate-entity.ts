@@ -3,6 +3,7 @@ import * as p from 'path';
 import { getDomainPath } from './helpers/getDomainPath';
 import { exist } from './utils/fs';
 import { isCorrectPath } from './helpers/isCorrectPath';
+import { selectModule } from './helpers/selectModule';
 
 let domainPath: string;
 const rootPath = process.cwd();
@@ -21,5 +22,8 @@ getDomainPath()
       throw new Error(`Domain path ${domainPath} doesn't exist`);
     }
     const fullPath = p.join(rootPath, domainPath);
-    console.log(fullPath);
+    return selectModule({ path: fullPath });
+  })
+  .then(moduleName => {
+    console.log(moduleName);
   });

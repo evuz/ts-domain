@@ -13,3 +13,7 @@ export interface IReadFile {
 export interface IExist {
   path: PathLike;
 }
+
+export interface IIsDirectory {
+  filePath: PathLike;
+}
