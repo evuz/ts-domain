@@ -11,8 +11,14 @@ export function isCorrectPath({ path }) {
     {
       type: 'input',
       name: 'path',
-      message: 'Insert a correct path: ',
+      message: 'Enter the domain path: ',
       when: answer => !answer.correct,
+      validate: value => {
+        if (!value) {
+          return 'Please enter a path.';
+        }
+        return true;
+      },
     },
   ];
   return prompt(questions).then(answer => {
