@@ -35,15 +35,8 @@ initialPath
     return isCorrectPath({ path: domainPath });
   })
   .then(value => {
+    const fullPath = p.join(rootPath, domainPath);
     domainPath = value;
-    const fullPath = p.join(rootPath, domainPath);
-    return exist({ path: fullPath });
-  })
-  .then(existDomainDir => {
-    const fullPath = p.join(rootPath, domainPath);
-    if (!existDomainDir) {
-      actions.add(new GenerateDirAction({ path: fullPath }));
-    }
 
     if (moduleName) {
       return moduleName;
@@ -52,14 +45,6 @@ initialPath
   })
   .then(value => {
     moduleName = value;
-    const fullPath = p.join(rootPath, domainPath, moduleName);
-    return exist({ path: fullPath });
-  })
-  .then(existModuleDir => {
-    const fullPath = p.join(rootPath, domainPath, moduleName);
-    if (!existModuleDir) {
-      actions.add(new GenerateDirAction({ path: fullPath }));
-    }
 
     if (entityName) {
       return entityName;

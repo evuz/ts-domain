@@ -12,6 +12,6 @@ export class GenerateDirAction extends Action {
   }
 
   execute() {
-    return mkDir({ path: this.path });
+    return mkDir({ path: this.path, options: { recursive: true } });
   }
 }
