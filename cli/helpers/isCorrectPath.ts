@@ -1,6 +1,8 @@
 import { prompt, Question } from 'inquirer';
 import chalk from 'chalk';
 
+import { emptyValidator } from '../utils/validators/empty';
+
 export function isCorrectPath({ path }) {
   const questions: Question[] = [
     {
@@ -13,12 +15,7 @@ export function isCorrectPath({ path }) {
       name: 'path',
       message: 'Enter the domain path: ',
       when: answer => !answer.correct,
-      validate: value => {
-        if (!value) {
-          return 'Please enter a path.';
-        }
-        return true;
-      },
+      validate: emptyValidator,
     },
   ];
   return prompt(questions).then(answer => {

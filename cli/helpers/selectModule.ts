@@ -3,18 +3,14 @@ import { prompt, Questions } from 'inquirer';
 
 import { readDir, isDirectory } from '../utils/fs';
 import { ISelectModule } from './types';
+import { emptyValidator } from '../utils/validators/empty';
 
 function questions(choices = []): Questions {
   const input = {
     type: 'input',
     name: 'module',
     message: 'Enter the name of the new module:',
-    validate: value => {
-      if (!value) {
-        return 'Please enter a path.';
-      }
-      return true;
-    },
+    validate: emptyValidator,
   };
   if (!choices.length) {
     return [input];
