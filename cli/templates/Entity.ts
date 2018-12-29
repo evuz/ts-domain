@@ -5,6 +5,7 @@ import { IEntityTemplate } from './types';
 
 export class EntityTemplate extends Template {
   private name: string;
+
   protected get tmpl() {
     return `
       export class ${changeCase.pascalCase(this.name)} {
