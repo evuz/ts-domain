@@ -1,7 +1,7 @@
 import * as p from 'path';
 import { prompt, Questions } from 'inquirer';
 
-import { readDir, isDirectory } from '../utils/fs';
+import { readDir, isDirectory, exist } from '../utils/fs';
 import { ISelectModule } from './types';
 import { emptyValidator } from '../utils/validators/empty';
 
@@ -25,7 +25,13 @@ function questions(choices = []): Questions {
 }
 
 export function selectModule({ path }: ISelectModule): Promise<string> {
-  return readDir({ path })
+  return exist({ path })
+    .then(existPath => {
+      if (!existPath) {
+        return [];
+      }
+      return readDir({ path });
+    })
     .then(directories => {
       return Promise.all(directories.map(directory => isDirectory({ filePath: p.join(path, directory) }))).then(
         results => {
