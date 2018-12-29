@@ -22,9 +22,6 @@ export function isCorrectPath({ path }) {
     if (!answer.correct) {
       return isCorrectPath({ path: answer.path });
     }
-    return {
-      ...answer,
-      path,
-    };
+    return path;
   });
 }

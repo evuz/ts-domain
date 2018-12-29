@@ -1,12 +1,12 @@
 const program = require('commander');
 
 program
-  .command('entity', 'generates a entity file')
+  .command('entity <name>', 'generates a entity file')
   .alias('e')
-  .command('repository', 'generates a repository')
+  .command('repository <name>', 'generates a repository')
   .alias('r')
-  .command('service', 'generates a service')
+  .command('service <name>', 'generates a service')
   .alias('s')
-  .command('use-case', 'generates a use case')
+  .command('use-case <name>', 'generates a use case')
   .alias('case')
   .parse(process.argv);
