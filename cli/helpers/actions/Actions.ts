@@ -8,9 +8,12 @@ export class Actions {
   }
 
   execute(): Promise<void> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       try {
-        this.actions.forEach(async action => await action.execute());
+        for (let i = 0; i < this.actions.length; i = i + 1) {
+          const action = this.actions[i];
+          await action.execute();
+        }
         resolve();
       } catch (err) {
         reject(err);
