@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
+    "@types/commander": "^2.12.2",
     "@types/inquirer": "0.0.43",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.18",
@@ -68,6 +69,7 @@
   },
   "dependencies": {
     "chalk": "^2.4.1",
+    "change-case": "^3.0.2",
     "commander": "^2.19.0",
     "inquirer": "^6.2.1"
   }
