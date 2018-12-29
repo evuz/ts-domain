@@ -7,11 +7,13 @@ import { getDomainPath } from './helpers/getDomainPath';
 import { exist } from './utils/fs';
 import { isCorrectPath } from './helpers/isCorrectPath';
 import { selectModule } from './helpers/selectModule';
-import { askEntityName } from './helpers/askEntityName';
+import { askName } from './helpers/askName';
 import { Actions } from './helpers/actions/Actions';
 import { GenerateDirAction } from './helpers/actions/GenerateDirAction';
 import { GenerateFileAction } from './helpers/actions/GenerateFileAction';
 import { EntityTemplate } from './templates/Entity';
+
+const FOLDER = 'Entities';
 
 program
   .option('-d, --domain <path>', 'Enter domain path')
@@ -49,15 +51,15 @@ initialPath
     if (entityName) {
       return entityName;
     }
-    return askEntityName();
+    return askName({ name: 'entity' });
   })
   .then(value => {
     entityName = value;
-    const fullPath = p.join(rootPath, domainPath, moduleName, 'Entities');
+    const fullPath = p.join(rootPath, domainPath, moduleName, FOLDER);
     return exist({ path: fullPath });
   })
   .then(existModuleDir => {
-    const fullPath = p.join(rootPath, domainPath, moduleName, 'Entities');
+    const fullPath = p.join(rootPath, domainPath, moduleName, FOLDER);
     if (!existModuleDir) {
       actions.add(new GenerateDirAction({ path: fullPath }));
     }
