@@ -1,4 +1,4 @@
-import { PathLike } from 'fs';
+import { PathLike, MakeDirectoryOptions, WriteFileOptions } from 'fs';
 
 export interface IReadDir {
   path: PathLike;
@@ -16,4 +16,15 @@ export interface IExist {
 
 export interface IIsDirectory {
   filePath: PathLike;
+}
+
+export interface IMkDir {
+  path: PathLike;
+  options?: number | string | MakeDirectoryOptions;
+}
+
+export interface IWriteFile {
+  path: PathLike | number;
+  data: any;
+  options?: WriteFileOptions;
 }
