@@ -13,7 +13,7 @@ export class RepositoryTemplate extends Template {
     return `
       import { ${pcModule}Repository } from './${pcModule}Repository';
 
-      export class ${pcName}${pcModule}Repository implements UsersRepository {
+      export class ${pcName}${pcModule}Repository implements ${pcModule}Repository {
         constructor() { }
       }
     `;

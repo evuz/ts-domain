@@ -3,8 +3,9 @@ import { Action } from './Action';
 export class Actions {
   private actions: Action[] = [];
 
-  add(action: Action) {
-    this.actions = [...this.actions, action];
+  add(action: Action | Action[]) {
+    const newAction = Array.isArray(action) ? action : [action];
+    this.actions = [...this.actions, ...newAction];
   }
 
   execute(): Promise<void> {

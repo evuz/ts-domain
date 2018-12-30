@@ -13,6 +13,11 @@ import { GenerateDirAction } from './actions/GenerateDirAction';
 import { GenerateFileAction } from './actions/GenerateFileAction';
 import { RepositoryInterfaceTemplate } from './templates/RepositoryInterface';
 import { RepositoryTemplate } from './templates/Repository';
+import { FactoryTemplate } from './templates/Factory';
+import { TemplateType } from './templates/types';
+import { EditFactoryAction } from './actions/EditFactoryAction';
+import { FactoryMethodTemplate } from './templates/FactoryMethod';
+import { ImportTemplate } from './templates/Import';
 
 const FOLDER = 'Repositories';
 
@@ -63,12 +68,34 @@ initialPath
   .then(existModuleDir => {
     const fullPath = p.join(rootPath, domainPath, moduleName, FOLDER);
     if (!existModuleDir) {
-      const template = new RepositoryInterfaceTemplate({ name: moduleName });
-      actions.add(new GenerateDirAction({ path: fullPath }));
-      actions.add(
+      const interfaceTmpl = new RepositoryInterfaceTemplate({ name: moduleName });
+      const factoryTmp = new FactoryTemplate({
+        name: repositoryName,
+        type: TemplateType.Repository,
+        module: moduleName,
+      });
+      actions.add([
+        new GenerateDirAction({ path: fullPath }),
         new GenerateFileAction({
           path: p.join(fullPath, `${changeCase.pascalCase(moduleName)}Repository.ts`),
-          data: template.paint(),
+          data: interfaceTmpl.paint(),
+        }),
+        new GenerateFileAction({
+          path: p.join(fullPath, `factory.ts`),
+          data: factoryTmp.paint(),
+        }),
+      ]);
+    } else {
+      const repository = changeCase.pascalCase(`${repositoryName} ${moduleName} repository`);
+      actions.add(
+        new EditFactoryAction({
+          path: p.join(fullPath, `factory.ts`),
+          importTemplate: new ImportTemplate({ path: `./${repository}`, modules: [repository] }),
+          template: new FactoryMethodTemplate({
+            name: repositoryName,
+            type: TemplateType.Repository,
+            module: moduleName,
+          }),
         }),
       );
     }
