@@ -1,6 +1,6 @@
 import { PathLike } from 'fs';
 
-import { mkDir } from '../../utils/fs';
+import { mkDir } from '../utils/fs';
 import { Action } from './Action';
 import { IGenerateDirAction, ActionType } from './types';
 

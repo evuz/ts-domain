@@ -8,9 +8,9 @@ import { exist } from './utils/fs';
 import { isCorrectPath } from './helpers/isCorrectPath';
 import { selectModule } from './helpers/selectModule';
 import { askName } from './helpers/askName';
-import { Actions } from './helpers/actions/Actions';
-import { GenerateDirAction } from './helpers/actions/GenerateDirAction';
-import { GenerateFileAction } from './helpers/actions/GenerateFileAction';
+import { Actions } from './actions/Actions';
+import { GenerateDirAction } from './actions/GenerateDirAction';
+import { GenerateFileAction } from './actions/GenerateFileAction';
 import { EntityTemplate } from './templates/Entity';
 
 const FOLDER = 'Entities';

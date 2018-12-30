@@ -1,6 +1,6 @@
 import { PathLike } from 'fs';
 
-import { writeFile } from '../../utils/fs';
+import { writeFile } from '../utils/fs';
 import { Action } from './Action';
 import { IGenerateFileAction, ActionType } from './types';
 
