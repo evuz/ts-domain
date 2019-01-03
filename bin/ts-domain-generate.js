@@ -5,8 +5,8 @@ program
   .alias('e')
   .command('repository <name>', 'generates a repository')
   .alias('r')
-  // .command('service <name>', 'generates a service')
-  // .alias('s')
+  .command('service <name>', 'generates a service')
+  .alias('s')
   // .command('use-case <name>', 'generates a use case')
-  .alias('case')
+  // .alias('case')
   .parse(process.argv);

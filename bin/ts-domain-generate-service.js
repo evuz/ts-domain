@@ -1,1 +1,1 @@
-console.log('Generate service');
+require('../lib/cli/generate-repository');
