@@ -1,1 +1,1 @@
-console.log('Generate Repository')
+require('../lib/cli/generate-repository');

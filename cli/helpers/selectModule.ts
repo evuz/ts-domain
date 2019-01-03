@@ -18,7 +18,7 @@ function questions(choices = []): Questions {
   const list = {
     type: 'list',
     name: 'module',
-    message: 'Choose the entity module: ',
+    message: 'Choose the module: ',
     choices: [...choices, 'new'],
   };
   return [list, { ...input, when: ({ module }) => module === 'new' }];
