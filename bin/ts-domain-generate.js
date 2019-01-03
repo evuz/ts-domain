@@ -8,5 +8,5 @@ program
   // .command('service <name>', 'generates a service')
   // .alias('s')
   // .command('use-case <name>', 'generates a use case')
-  .alias('case')
+  // .alias('case')
   .parse(process.argv);
