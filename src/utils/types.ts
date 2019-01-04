@@ -1,9 +1,4 @@
-export interface IConstructor<T> {
+export interface IConstructor<T, U extends any[]> {
   name?: string;
-  new (...args: any[]): T;
-}
-
-export interface ISingleton<T> {
-  class: IConstructor<T>;
-  props?: any | any[];
+  new (...args: U | never[]): T;
 }

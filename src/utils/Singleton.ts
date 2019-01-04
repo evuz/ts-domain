@@ -1,10 +1,9 @@
-import { ISingleton } from './types';
+import { IConstructor } from './types';
 export { generateSingleton } from './Singleton.fallback';
 
-export class Singleton<T> {
+export class Singleton<T, U extends any[]> {
   private instance: T;
-  constructor({ class: singleton, props }: ISingleton<T>) {
-    const params = Array.isArray(props) ? props : [props];
+  constructor(singleton: IConstructor<T, U>, ...params: U) {
     this.instance = new singleton(...params);
   }
 

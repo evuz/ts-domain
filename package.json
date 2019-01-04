@@ -16,6 +16,7 @@
     "build:cli": "tsc --project tsconfig.cli.json",
     "dev:lib": "tsc --watch --project tsconfig.lib.json",
     "dev:cli": "tsc --watch --project tsconfig.cli.json",
+    "dev:test": "jest --watch --config jestconfig.json",
     "lint": "npm run lint:lib && npm run lint:cli",
     "lint:lib": "tslint -p tsconfig.lib.json",
     "lint:cli": "tslint -p tsconfig.cli.json",
