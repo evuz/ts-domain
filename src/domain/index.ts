@@ -1,4 +1,4 @@
-import { IDomain, IGetConfig, IGetUseCase, ISetConfig } from './interfaces';
+import { IDomain, IGetConfig, IGetUseCase, ISetConfig } from './types';
 
 export class Domain<T> {
   private useCases: T;
