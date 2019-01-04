@@ -1,4 +1,4 @@
-import { generateSingleton, Singleton } from '../../utils/Singleton';
+import { generateSingleton, Singleton } from '../../utils/singleton';
 
 // tslint:disable-next-line:max-classes-per-file
 class Foo {
