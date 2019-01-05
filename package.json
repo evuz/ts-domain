@@ -1,6 +1,6 @@
 {
   "name": "ts-domain",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Tools to generate a domain",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
