@@ -23,7 +23,7 @@
     "format": "npm run format:lib && npm run format:cli",
     "format:lib": "prettier --write \"src/**/*.ts\"",
     "format:cli": "prettier --write \"cli/**/*.ts\"",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jestconfig.json --silent",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
