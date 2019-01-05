@@ -1,13 +1,15 @@
 import { IConstructor } from './types';
 export { generateSingleton } from './Singleton.fallback';
 
-export class Singleton<T, U extends any[]> {
-  private instance: T;
-  constructor(singleton: IConstructor<T, U>, ...params: U) {
-    this.instance = new singleton(...params);
+export function singleton<T, U extends any[]>(singleton: IConstructor<T, U>, ...params: U) {
+  let instance: T;
+  instance = new singleton(...params);
+
+  function getInstance(): T {
+    return instance;
   }
 
-  public getInstance(): T {
-    return this.instance;
-  }
+  return {
+    getInstance,
+  };
 }
