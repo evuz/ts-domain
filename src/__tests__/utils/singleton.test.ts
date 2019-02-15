@@ -1,4 +1,4 @@
-import { generateSingleton, Singleton } from '../../utils/singleton';
+import { Singleton } from '../../utils/singleton';
 
 // tslint:disable-next-line:max-classes-per-file
 class Foo {
@@ -19,58 +19,35 @@ class Baz {
 class Qux {}
 
 describe('Utils => singleton', () => {
-  test('should instance a class (deprecated)', () => {
-    const foo = generateSingleton(Foo, 'one', 2, 'three');
-    expect(foo instanceof Foo).toBeTruthy();
-  });
-
-  test('should instance a class with params (deprecated)', () => {
-    const param = 'test param';
-    const bar = generateSingleton(Bar, param);
-    expect(bar.param).toBe(param);
-  });
-
-  test('instance class only one time (deprecated)', () => {
-    const foo = generateSingleton(Foo, 'one', 2, 'three');
-    const sameFoo = generateSingleton(Foo, 'one', 2, 'three');
-    expect(foo).toBe(sameFoo);
-  });
-
-  test('instance two differents class (deprecated)', () => {
-    const foo = generateSingleton(Foo, 'one', 2, 'three');
-    const bar = generateSingleton(Bar, 'one');
-    expect(foo).not.toBe(bar);
-  });
-
   test('should instance a class', () => {
-    const baz = new Singleton(Baz, { param: 's' }).getInstance();
+    const baz = Singleton({ singleton: Baz, type: 'Baz' }, { param: 's' });
     expect(baz instanceof Baz).toBeTruthy();
   });
 
   test('should instance a class with params', () => {
     const param = 'test param';
-    const bar = new Singleton(Bar, param).getInstance();
+    const bar = Singleton({ singleton: Bar, type: 'Bar' }, param);
     expect(bar.param).toBe(param);
   });
 
   test('should instance a class with several params', () => {
     const params = { x: 'param_x', y: 3, z: 'param_z' };
     const props = Object.keys(params).map(key => params[key]);
-    const bar = new Singleton(Foo, ...props).getInstance();
+    const foo = Singleton({ singleton: Foo, type: 'Foo' }, ...props);
     Object.keys(params).forEach(key => {
-      expect(bar[key]).toBe(params[key]);
+      expect(foo[key]).toBe(params[key]);
     });
   });
 
   test('should instance class only one time', () => {
-    const qux = new Singleton(Qux);
-    const instance = qux.getInstance();
-    expect(qux.getInstance()).toBe(instance);
+    const firstInstance = Singleton({ singleton: Qux, type: 'Qux' });
+    const secondInstance = Singleton({ singleton: Qux, type: 'Qux' });
+    expect(firstInstance).toBe(secondInstance);
   });
 
   test('should instance two differents class', () => {
-    const foo = new Singleton(Foo, 'one', 2, 'three').getInstance();
-    const bar = new Singleton(Bar, 'param').getInstance();
+    const foo = Singleton({ singleton: Foo, type: 'Foo' }, 'one', 2, 'three');
+    const bar = Singleton({ singleton: Bar, type: 'Bar' }, 'param');
     expect(foo).not.toBe(bar);
   });
 });
